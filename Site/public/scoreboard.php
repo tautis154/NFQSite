@@ -1,37 +1,22 @@
 <?php
-include "../config.php";
+include "../resources/config.php";
 
 $served = 0;
-
 if(isset($_POST['filter']) && $_POST['limit']!="" && is_numeric($_POST['limit']))
 {
   $limit = $_POST['limit'];
-  $sql = "SELECT * FROM data WHERE served = ? ORDER BY `reg_date` ASC LIMIT ?";
+  $sql = "SELECT * FROM clients WHERE served = ? ORDER BY `reg_date` ASC LIMIT ?";
   $stmt = $pdo->prepare($sql);
   $stmt -> execute([$served,$limit]);
-  $posts = $stmt->fetchAll();
+  $clients = $stmt->fetchAll();
 }
 else{
-$sql = "SELECT * FROM data WHERE served = ? ORDER BY `reg_date` ASC ";
-$stmt = $pdo->prepare($sql);
-$stmt -> execute([$served]);
-$posts = $stmt->fetchAll();
+  $sql = "SELECT * FROM clients WHERE served = ? ORDER BY `reg_date` ASC ";
+  $stmt = $pdo->prepare($sql);
+  $stmt -> execute([$served]);
+  $clients = $stmt->fetchAll();
 }
 include "../calculations.php"
-
-
-
-      //   $clientID = $posts[$i]->id;
-    //     $sqll = "UPDATE data SET time_left = ? WHERE id = ?";
-      //   $stmtt = $pdo->prepare($sqll);
-      //   $stmtt -> execute([$nzn,$clientID]);
-
-      //  UPDATE SET WHERE id = ? // tas id tai post id
-
-
-
-
-
 
 ?>
 <!DOCTYPE html>
@@ -44,13 +29,10 @@ include "../calculations.php"
   </head>
   <body>
     <header id="main-header">
-          <div class ="container">
-          <h1>Doctor's Page</h1>
-          </div>
-        </header>
-
-
-
+      <div class ="container">
+        <h1>Doctor's Page</h1>
+      </div>
+    </header>
     <nav id="navbar">
       <div class ="container">
         <ul>
@@ -61,43 +43,28 @@ include "../calculations.php"
     </nav>
     <form class="" action="scoreboard.php" method="post">
       <div class="container">
-
-      <label >Enter how many clients you want to see</label>
+        <label >Enter how many clients you want to see</label>
       <br>
       <input type="text" name="limit" value="">
       <input type="submit" name="filter" value="Filter">
     </div>
-    </form>
-
-
-
-    <table style="margin-top: 20px" class="table" id="table1">
-
-              <tr>
-                <th>Client</th>
-                <th>Number</th>
-                <th>Date</th>
-                <th>Time left</th>
-
-              </tr>
-
-
-              <?php
-
-
-
-
-               foreach($posts as $post) {
-                 echo "<tr>";
-                         echo "<td>" . $post->client . "</td>";
-                         echo "<td>" . $post->id . "</td>";
-                         echo "<td>" . $post->reg_date . "</td>";
-                         echo "<td>" . timeLeft($post->doctor_id,$post->id) . "</td>";
-                         echo "</tr>";
-           }
-
-
-               ?>
-
+  </form>
+  <table style="margin-top: 20px" class="table" id="table1">
+    <tr>
+      <th>Client</th>
+      <th>Number</th>
+      <th>Date</th>
+      <th>Time left</th>
+    </tr>
+    <?php
+    foreach($clients as $client) {
+      echo "<tr>";
+      echo "<td>" . $client->client . "</td>";
+      echo "<td>" . $client->id . "</td>";
+      echo "<td>" . $client->reg_date . "</td>";
+      echo "<td>" . timeLeft($client->doctor_id,$client->id) . "</td>";
+      echo "</tr>";
+    }
+  ?>
   </body>
 </html>

@@ -1,15 +1,12 @@
 body{
-
   background-color: ##59336;
   color:#555;
   font-family: Arial,Helvetica,sans-serif;
   font-size:20px;
   line-height: 1.6em;
   margin:0;
-
 }
 .container{
-
   width: 80%;
   margin:auto;
   overflow:hidden;
@@ -33,9 +30,6 @@ body{
   border-bottom:dotted 1px #333;
   list-style-image: url('../images/check.png');
 }
-
-
-
 .header{
     text-align: center;
     color: black;
@@ -62,20 +56,15 @@ body{
  border-collapse: collapse;
  table-layout: auto;
  width: 70%;
-
-
-
 }
 table#table1{
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 200px;
 }
-
 #table1 td, #table1 th {
   border: 1px solid #ddd;
   padding: 3px;
-
 }
 #table1 td{
  width: 10%
