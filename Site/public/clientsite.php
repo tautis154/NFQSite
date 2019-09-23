@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "../resources/config.php";
-include "../calculations.php";
+include "calculations.php";
 
 $uniqid = $_SESSION["clientSite"];
 $sql = "SELECT * FROM `clients` WHERE uniqid = ?";
@@ -22,6 +22,7 @@ $doctors = $stmt->fetchAll();
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/css/containerStyle.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Client Page</title>
     <meta http-equiv="refresh" content="5" >
   </head>
   <body>
@@ -33,8 +34,9 @@ $doctors = $stmt->fetchAll();
     <nav id="navbar">
       <div class ="container">
         <ul>
-          <li><a href="index.php" >Home Page</a></li>
+          <li><a href="../index.php" >Home Page</a></li>
           <li><a href="scoreboard.php"  >Scoreboard</a></li>
+          <li><a href="doctor.php"  >Doctor Page</a></li>
         </ul>
       </div>
     </nav>

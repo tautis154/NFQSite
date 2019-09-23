@@ -1,8 +1,8 @@
 <?php
-$host = "localhost";
-$username = "root";
-$password = "";
-$db = "nfqsite";
+$host = "us-cdbr-iron-east-02.cleardb.net";
+$username = "bfb3c3a66b2456";
+$password = "38ede812";
+$db = "heroku_fde3688f47887e3";
 
 try{
   $dsn = "mysql:host=" . $host .";dbname=" . $db;

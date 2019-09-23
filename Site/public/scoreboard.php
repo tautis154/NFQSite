@@ -16,14 +16,14 @@ else{
   $stmt -> execute([$served]);
   $clients = $stmt->fetchAll();
 }
-include "../calculations.php"
+include "calculations.php"
 
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Scoreboard</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
@@ -36,8 +36,8 @@ include "../calculations.php"
     <nav id="navbar">
       <div class ="container">
         <ul>
-          <li><a href="index.php" >Home Page</a></li>
-          <li><a href="../doctor.php" >Doctor Page</a></li>
+          <li><a href="../index.php" >Home Page</a></li>
+          <li><a href="doctor.php" >Doctor Page</a></li>
         </ul>
       </div>
     </nav>
